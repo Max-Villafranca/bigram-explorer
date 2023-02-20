@@ -1,0 +1,219 @@
+*{
+    font-family: 'Noto Sans Mono', monospace;
+    box-sizing:border-box;
+    color: white;
+    padding: 0rem;
+    margin:0px;
+}
+*:focus {outline: none;}
+
+:root{
+    --panels-background-color: #1a1a1a;
+    --table-dark-row: #111;
+    --table-light-row: #222;
+    --table-header-color: rgb(89, 102, 128);
+    --count-number-color: #ae81ff;
+    --word-gap-x2: .5rem;
+    --x-eye-position:#9a9a9a;
+    --string-color: #E6DB74;
+}
+body {
+    background-color: red;
+    height: 100vh;
+}
+
+#container {
+    display:grid;
+    height: 100%;
+    grid-template:auto 5fr / 3.5fr 3fr 2.5fr;
+}
+
+#statsPanel{
+    padding: 1rem;
+    background-color: var(--panels-background-color);
+    grid-column: 1/2;
+    grid-row: 1/2;
+    /* background-color: pink; */
+}
+
+#pastePanel {
+    padding: 1rem;
+    grid-column: 1/2;
+    grid-row:2/3;
+    background-color: var(--panels-background-color);
+}
+
+
+#wordsPanel {
+    grid-column: 2/3;
+    grid-row:1/3;
+    background-color: var(--panels-background-color);
+    padding: 1rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+#soundsPanel {
+    background-color: var(--panels-background-color);
+    grid-column: 3/4;
+    grid-row:1/3;
+    padding: 1rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+
+/************************************
+***************TABLES*************-*/
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    /* font-size: .8rem; */
+    border-bottom: .2rem  solid rgb(17, 29, 70);
+}
+
+th{
+    color: var(--table-header-color);
+    background-color: var(--table-dark-row);
+    height: 2rem;
+}
+
+td {
+    /* padding: .2rem; */
+    color:var(--string-color);
+    text-align: center;
+}
+
+#statsTable td:nth-child(1),
+#statsTable td:nth-child(5) {
+    color: var(--x-eye-position);
+    width: 2rem;
+}
+
+#statsTable td:nth-child(1):not(:empty):hover ,
+#statsTable td:nth-child(5):not(:empty):hover {
+    color: #d99;
+    cursor: pointer;
+}
+
+#statsTable td:nth-child(2){
+    color: var(--string-color);
+}
+
+#statsTable td:nth-child(3),
+#statsTable td:nth-child(4) {
+    color: var(--count-number-color);
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+    text-align: right;
+    padding-right: var(--word-gap-x2);
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+    text-align: left;
+    padding-left: var(--word-gap-x2);
+}
+
+td:nth-child(1) {
+    color: var(--x-eye-position);
+    font-size: .8rem;
+}
+
+td:nth-child(2){
+    color: var(--count-number-color);
+    font-size: .9rem;
+}
+
+.position,
+.count{
+    width: 3rem;
+}
+
+tr{height: 1.5rem ;}
+
+tr:nth-child(even){
+    background-color: var(--table-dark-row);
+}
+
+tr:nth-child(odd){
+    background-color: var(--table-light-row);
+}
+
+/***************************************
+************PASTE AREA******************/
+
+form{
+    display:grid;
+    grid-template-rows: min-content auto;
+    height: 100%;
+}
+
+#pasteBinHeader{
+    display: flex;
+    height: max-content;
+    grid-row: 1/2;
+    justify-content: space-between;
+}
+
+#pasteBinHeader input{
+    min-width: 10rem;
+    width: 50%;
+    padding: .5rem 1rem;
+    color: black;
+    border-style: none;
+    border-radius: 10px;
+    
+}
+
+#pasteBinHeader button{
+    border-style: none;
+    padding: .5rem 1rem;
+    /* background-color: #1a1a1a; */
+    color: black;
+    border-radius: 10px;
+}
+
+.shake{
+    animation: shake 0.5s;
+  }
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-3deg); }
+    20% { transform: translate(-3px, 0px) rotate(3deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(3deg); }
+    50% { transform: translate(-1px, 2px) rotate(-3deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-3deg); }
+    80% { transform: translate(-1px, -1px) rotate(3deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-3deg); }
+}
+
+#textArea{
+    margin-top: 1rem;
+    width: 100%;
+    grid-row: 2/3;
+    resize: none;
+    color: black;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color:darkgray;
+}
+
+/* #textArea::placeholder{
+    
+} */
+
+/* 
+::-webkit-scrollbar{background-color:black;}
+::-webkit-scrollbar-thumb{
+    background-color: gray;
+    border-radius: 100px;
+} */
+
